@@ -304,12 +304,13 @@ module.exports = function(webpackEnv) {
               options: {
                 formatter: require.resolve('react-dev-utils/eslintFormatter'),
                 eslintPath: require.resolve('eslint'),
-                
               },
               loader: require.resolve('eslint-loader'),
             },
+            
           ],
           include: paths.appSrc,
+
         },
          
         {
@@ -338,10 +339,10 @@ module.exports = function(webpackEnv) {
                 customize: require.resolve(
                   'babel-preset-react-app/webpack-overrides'
                 ),
-                
                 plugins: [
                   [
                     require.resolve('babel-plugin-named-asset-import'),
+                  
                     {
                       loaderMap: {
                         svg: {
@@ -349,8 +350,9 @@ module.exports = function(webpackEnv) {
                             '@svgr/webpack?-prettier,-svgo![path]',
                         },
                       },
-                    },
+                    }, 
                   ],
+                  ['import', { libraryName: 'antd', style: true }]
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -386,6 +388,7 @@ module.exports = function(webpackEnv) {
                 sourceMaps: false,
               },
             },
+            
             // "postcss" loader applies autoprefixer to our CSS.
             // "css" loader resolves paths in CSS and adds assets as dependencies.
             // "style" loader turns CSS into JS modules that inject <style> tags.
