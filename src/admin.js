@@ -10,12 +10,11 @@ import "./style/common.less"
 class Admin extends React.Component {
   render(){
     return(
-       < Row className="containner">
-         < Col span = {4} className = "nav-left" > 
+       < Row className="containner clearfix">
+         < Col span = {4} className = "nav-left fl" > 
          <NavLeft/> 
-         左侧布局
          </Col >
-         <Col span = {20} className="main">
+         <Col span = {20} className="main fr">
             < Header/>
             <Row className="content"></Row>
             < Footer/>
