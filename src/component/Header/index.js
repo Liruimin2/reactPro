@@ -6,9 +6,16 @@ import {
 import './index.less';
 import '../../style/common.less'
 import Util from '../../util/util';
-import axios from '../../axios'
+import axios from 'axios';
+// import axios from '../../axios'
 class Header extends React.Component {
   state = {
+    province:'',
+    city:'',
+    temperature:'',
+    weather:'',
+   winddirection:''
+
   }
   componentWillMount(){
     this.setState({userName:'react'}
@@ -23,22 +30,21 @@ class Header extends React.Component {
     this.getWeatherApidata();
   }
   getWeatherApidata(){
-    let city ='北京';
-    axios.jsonp({
-      url: 'http://api.map.baidu.com/telematics/v3/weather?location=' + encodeURIComponent(city) + '&output=json&ak=gIAq2vcLD65Fg0plQS8Em7du99ZubibI'
-     
-    }).then((res)=>{
-      if (res.status === 'success') {
-        console.log(res.result);
-        
-        // let data = res.results[0].weather_data[0];
-        // this.setState({
-        //   dayPictureUrl: data.dayPictureUrl,
-        //   weather: data.weather
-        // })
-      }
+    axios('https://restapi.amap.com/v3/weather/weatherInfo?city=110101&key=		bffa43c7d8bad97198b27d18cf0dd34a').then((res)=> {
+      console.log(res.data);
+      console.log(res.status);
+      let data = res.data.lives[0];
+      console.log(data);
+      this.setState({
+        province: data.province,
+        city:data.city,
+        temperature: data.temperature,
+        weather: data.weather,
+        winddirection: data.winddirection
+      })
     })
   }
+  
   render() {
     return (
     <div className = "header" > 
@@ -57,17 +63,21 @@ class Header extends React.Component {
           <div className="titleShape"></div></Col>
         <Col span={20} className = "weather fr" >
           <span className = "date" > {this.state.syaTime}</span> 
-          {/* <span className="weather-pic">
-            < img src = {
-             this.state.dayPictureUrl
-            }
-            alt = "" / >
-          </span>
           <span className="weather-dis">
             {
+              this.state.province
+            } < span className = "weather-dis" > {
+              this.state.city
+            } </span><span className = "weather-dis">温度：{
+            this.state.temperature
+            } 摄氏度   </span>
+            < span className = "weather-dis" >天气： {
               this.state.weather
-            }
-          </span> */}
+            } </span>
+            < span className = "weather-dis" >    风向：{
+              this.state.winddirection
+            } </span>
+          </span>
         </Col>
          
       </Row>
