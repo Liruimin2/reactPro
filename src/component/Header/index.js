@@ -66,9 +66,11 @@ class Header extends React.Component {
           <span className="weather-dis">
             {
               this.state.province
-            } < span className = "weather-dis" > {
+            }
+             {/* < span className = "weather-dis" > {
               this.state.city
-            } </span><span className = "weather-dis">温度：{
+            } </span> */}
+            <span className = "weather-dis">温度：{
             this.state.temperature
             } 摄氏度   </span>
             < span className = "weather-dis" >天气： {
