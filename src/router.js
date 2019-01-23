@@ -4,23 +4,52 @@ import Admin from './admin';
 import {
   HashRouter,
   Route,
-  // Switch
+  Switch
 }from 'react-router-dom';
-// import Login from './pages/login';
-import Nomatch from './pages/noMatch';
+import Home from './pages/home';
+// import Login from './pages/login/login'
+import Buttons from './pages/ui/buttons';
+import Modals from './pages/ui/modals';
+import Loading from './pages/ui/loading'
+// import Nomatch from './pages/noMatch';
 export default class ERouter extends React.Component {
 
  render() {
     return (
       <HashRouter>
         <App>
-          {/* <Route path="/login" component={Login}/> */}
-          <Route path="/admin" render={()=>
-          <Admin>
-            <Route path="/admin/ui/button"></Route>
-            <Route component={Nomatch}></Route>
-          </Admin>}>
-          </Route>
+          < Switch >
+             {/* < Route path = "/"
+             component = {
+               Home
+             }
+             />  */}
+             <Route path = "/admin"
+             render = {
+                 () =>
+                 <Admin >
+                 < Switch >
+                 <Route path = "/admin/ui/buttons"
+                 component = {
+                   Buttons
+                 } > </Route> 
+                 < Route path = "/admin/ui/modals" component = {
+                   Modals
+                 } > </Route>
+                 < Route path = "/admin/ui/loading"
+                 component = {
+                   Loading
+                 } > 
+                 </Route>
+                 <Route component = {
+                   Home
+                 } >
+                 </Route> 
+                 </Switch>
+                 </Admin>}
+                 > 
+                 </Route>
+          </Switch>
         </App>
       </HashRouter>
     );

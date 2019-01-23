@@ -21,13 +21,28 @@ class Header extends React.Component {
     this.setState({userName:'react'}
     )
  
+    
+    // this.getWeatherApidata();
+  }
+  timer(){
     setInterval(() => {
       let syaTime = Util.formateDate(new Date().getTime())
       this.setState({
         syaTime
       })
     }, 1000);
+  }
+  componentDidMount(){
     this.getWeatherApidata();
+    this.timer();
+   
+  }
+  componentWillUnmount=()=>{
+    this.setState=(state,callback)=>{
+      return
+    }
+    // this.getWeatherApidata();
+    // clearTimeout(this.timer);
   }
   getWeatherApidata(){
     axios('https://restapi.amap.com/v3/weather/weatherInfo?city=110101&key=		bffa43c7d8bad97198b27d18cf0dd34a').then((res)=> {
