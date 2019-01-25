@@ -11,6 +11,9 @@ import Home from './pages/home';
 import Buttons from './pages/ui/buttons';
 import Modals from './pages/ui/modals';
 import Loading from './pages/ui/loading'
+import Notification from './pages/ui/notification'
+import Message from './pages/ui/message'
+import Tabs from './pages/ui/tab'
 // import Nomatch from './pages/noMatch';
 export default class ERouter extends React.Component {
 
@@ -33,7 +36,8 @@ export default class ERouter extends React.Component {
                  component = {
                    Buttons
                  } > </Route> 
-                 < Route path = "/admin/ui/modals" component = {
+                 < Route path = "/admin/ui/modals"
+                  component = {
                    Modals
                  } > </Route>
                  < Route path = "/admin/ui/loading"
@@ -41,6 +45,21 @@ export default class ERouter extends React.Component {
                    Loading
                  } > 
                  </Route>
+                 < Route path = "/admin/ui/notification"
+                 component = {
+                    Notification
+                   } >
+                </Route>
+                < Route path = "/admin/ui/message"
+                component = {
+                    Message
+                  } >
+                </Route>
+                < Route path = "/admin/ui/tabs"
+                component = {
+                   Tabs
+                  } >
+                  </Route>
                  <Route component = {
                    Home
                  } >
