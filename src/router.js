@@ -14,6 +14,8 @@ import Loading from './pages/ui/loading'
 import Notification from './pages/ui/notification'
 import Message from './pages/ui/message'
 import Tabs from './pages/ui/tab'
+import Gallery from './pages/ui/gallery'
+import Carousel from './pages/ui/carousel'
 // import Nomatch from './pages/noMatch';
 export default class ERouter extends React.Component {
 
@@ -60,6 +62,14 @@ export default class ERouter extends React.Component {
                    Tabs
                   } >
                   </Route>
+                < Route path = "/admin/ui/gallery"
+                component={Gallery}> 
+                </Route>
+                < Route path = "/admin/ui/carousel"
+                component = {
+                  Carousel
+                } > 
+                </Route>
                  <Route component = {
                    Home
                  } >
