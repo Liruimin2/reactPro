@@ -16,6 +16,7 @@ import Message from './pages/ui/message'
 import Tabs from './pages/ui/tab'
 import Gallery from './pages/ui/gallery'
 import Carousel from './pages/ui/carousel'
+import FormLogin from './pages/form/login'
 // import Nomatch from './pages/noMatch';
 export default class ERouter extends React.Component {
 
@@ -68,6 +69,11 @@ export default class ERouter extends React.Component {
                 < Route path = "/admin/ui/carousel"
                 component = {
                   Carousel
+                } > 
+                </Route>
+                < Route path = "/admin/form/login"
+                component = {
+                  FormLogin
                 } > 
                 </Route>
                  <Route component = {
