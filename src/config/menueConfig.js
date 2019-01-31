@@ -47,16 +47,21 @@ const menuList = [
          key: '/admin/form/login',
        },
        {
-         title: '注册',
-         key: '/form/reg',
-       }
+        title: '注册',
+        key: '/admin/form/register'
+       },
+      //  {
+      //    title: '注册',
+      //    key: '/form/reg',
+      //  }
      ]
    }, {
      title: '表格',
      key: '/table',
-     children: [{
+     children: [
+       {
          title: '基础表格',
-         key: '/table/basic',
+         key: 'admin/table/basic',
        },
        {
          title: '高级表格',

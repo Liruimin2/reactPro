@@ -15,8 +15,10 @@ import Notification from './pages/ui/notification'
 import Message from './pages/ui/message'
 import Tabs from './pages/ui/tab'
 import Gallery from './pages/ui/gallery'
-import Carousel from './pages/ui/carousel'
+import Carousel from './pages/ui/carousel';
+import Registers from './pages/form/register'
 import FormLogin from './pages/form/login'
+import BasicTable from './pages/table/basicTable'
 // import Nomatch from './pages/noMatch';
 export default class ERouter extends React.Component {
 
@@ -76,6 +78,16 @@ export default class ERouter extends React.Component {
                   FormLogin
                 } > 
                 </Route>
+                < Route path = "/admin/form/register"
+                component = {
+                    Registers
+                  } >
+                </Route>
+                < Route path = "/admin/table/basic"
+                component = {
+                    BasicTable
+                  } >
+                  </Route>
                  <Route component = {
                    Home
                  } >
