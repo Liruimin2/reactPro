@@ -4,7 +4,8 @@ import Admin from './admin';
 import {
   HashRouter,
   Route,
-  Switch
+  Switch,
+  Redirect
 }from 'react-router-dom';
 import Home from './pages/home';
 // import Login from './pages/login/login'
@@ -87,15 +88,17 @@ export default class ERouter extends React.Component {
                 component = {
                     BasicTable
                   } >
-                  </Route>
+                </Route>
                  <Route component = {
                    Home
                  } >
                  </Route> 
+                 
                  </Switch>
                  </Admin>}
                  > 
                  </Route>
+                 < Redirect to="/admin" />
           </Switch>
         </App>
       </HashRouter>

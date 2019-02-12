@@ -61,7 +61,7 @@ const menuList = [
      children: [
        {
          title: '基础表格',
-         key: 'admin/table/basic',
+         key: '/admin/table/basic',
        },
        {
          title: '高级表格',
