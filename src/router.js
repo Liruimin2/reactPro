@@ -20,6 +20,7 @@ import Carousel from './pages/ui/carousel';
 import Registers from './pages/form/register'
 import FormLogin from './pages/form/login'
 import BasicTable from './pages/table/basicTable'
+import HighTable from './pages/table/highTable'
 // import Nomatch from './pages/noMatch';
 export default class ERouter extends React.Component {
 
@@ -89,6 +90,11 @@ export default class ERouter extends React.Component {
                     BasicTable
                   } >
                 </Route>
+                < Route path = "/admin/table/high"
+                component = {
+                    HighTable
+                  } >
+                  </Route>
                  <Route component = {
                    Home
                  } >

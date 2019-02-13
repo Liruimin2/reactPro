@@ -7,7 +7,8 @@ import {
   Modal
 } from 'antd';
 // import axios from 'axios'
-import axios from '../../axios/index'
+import axios from '../../axios/index';
+import Utils from '../../util/util';
 export default class basicTable extends React.Component{
   state = {
     dataSource: [],
@@ -65,7 +66,7 @@ export default class basicTable extends React.Component{
      
       
     // })
-  //  let _this = this;
+   let self = this;
    axios.ajax({
      url: '/tablelist',
      data: {
@@ -82,10 +83,10 @@ export default class basicTable extends React.Component{
          dataSource2: res.result.list,
          selectedRowKeys: [],
          selectedRows: null,
-        //  pagination: Utils.pagination(res, (current) => {
-        //    _this.params.page = current;
-        //    this.request();
-        //  })
+         pagination: Utils.pagination(res, (current) => {
+           self.params.page = current;
+           this.respose();
+         })
        })
      }
    })
@@ -299,6 +300,20 @@ export default class basicTable extends React.Component{
             }
           } >
           </Table>
+         </Card>
+         <Card title="Mock-表格分页" style={{marginTop:10}}>
+            <Table
+            bordered
+            columns = {
+              columns
+            }
+            dataSource = {
+              this.state.dataSource2
+            }
+            pagination={this.state.pagination}
+            >
+              
+            </Table>
          </Card>
       </div>
     )
