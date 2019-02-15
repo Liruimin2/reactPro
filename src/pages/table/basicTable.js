@@ -21,8 +21,6 @@ export default class basicTable extends React.Component{
     console.log(event)
   }
   onRowClick=(record,index)=>{
-    console.log(record, index, '111');
-    
     let selectKey = [index];
     Modal.info({
       title: '信息',

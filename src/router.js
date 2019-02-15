@@ -21,6 +21,7 @@ import Registers from './pages/form/register'
 import FormLogin from './pages/form/login'
 import BasicTable from './pages/table/basicTable'
 import HighTable from './pages/table/highTable'
+import City from './pages/city/index'
 // import Nomatch from './pages/noMatch';
 export default class ERouter extends React.Component {
 
@@ -94,7 +95,13 @@ export default class ERouter extends React.Component {
                 component = {
                     HighTable
                   } >
-                  </Route>
+                </Route>
+                 < Route path = "/admin/city"
+                 component = {
+                    City
+                   } 
+                >
+                </Route>
                  <Route component = {
                    Home
                  } >

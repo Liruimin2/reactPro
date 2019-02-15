@@ -111,9 +111,6 @@ export default class basicTable extends React.Component {
           dataIndex: 'age',
           key: 'age',
           sorter:(a,b)=>{
-            console.log(a,'a');
-            console.log(b,'b');
-            
             return a.age-b.age
           }
         }, {

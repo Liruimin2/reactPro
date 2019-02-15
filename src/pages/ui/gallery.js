@@ -90,7 +90,7 @@ export default class Gallery extends React.Component {
               width: '100%'
             }
           }
-          alt = "" / >
+          alt = "" />
         }
 
         </Modal>
