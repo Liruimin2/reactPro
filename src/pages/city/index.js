@@ -15,7 +15,8 @@ const Option = Select.Option;
 export default class City extends React.Component {
   state={
     list:[],
-    isShowCIty:false
+    isShowCIty:false,
+    reCord:{}
   }
   params={
     page:1
@@ -50,6 +51,32 @@ export default class City extends React.Component {
     this.setState({
       isShowCIty:true
     })
+  }
+  // 跳转到详细信息
+  openOrderDetail=()=>{
+    let item = this.state.selectedItem;
+    console.log(item,'item22');
+    
+    if(!item){
+      Modal.info(
+        {
+          title:'信息',
+          content:'请先选择一条订单'
+        }
+      )
+      return;
+    }
+    // 跳转到详情页面
+    window.open(`/#/common/order/detail/${item.id}`,)
+  }
+  onRowClick=(record,index)=>{
+    let selectKey = [index];
+    this.setState({
+      selectedRowKeys:selectKey,
+      selectedItem: record
+    })
+    console.log(record,'record');
+    
   }
  handleSubmit=()=>{
    let cityInfo = this.cityForm.props.form.getFieldsValue();
@@ -112,6 +139,20 @@ export default class City extends React.Component {
         dataIndex: 'sys_user_name'
       }
     ]
+    const selectedRowKeys = this.state.selectedRowKeys;
+    const rowSelection = {
+      type: 'radio',
+      selectedRowKeys,
+      onChange: (selectedRowKeys,record) => {
+        this.setState({
+          selectedRowKeys,
+          selectedItem: record[0]
+        })
+        console.log(record[0], 'reco666');
+      }
+      
+      
+    }
     return(
     <div>
       <Card>
@@ -119,16 +160,36 @@ export default class City extends React.Component {
       </Card>
       <Card style={{marginTop:10}}>
         <Button type="primary" onClick={this.handleOpenCity}>开通城市</Button>
+        < Button style = {
+          {
+            marginLeft: '10px'
+          }
+        }
+        onClick = {
+          this.openOrderDetail
+        } > 订单详情 </Button>
         <Table
         style = {
           {
             marginTop: 10
           }
         }
+        rowSelection = {
+          rowSelection
+        }
         bordered
         columns={columns}
         dataSource={this.state.list}
         pagination={this.state.pagination}
+        onRow = {
+          (record, index) => {
+            return {
+              onClick: () => {
+                this.onRowClick(record, index);
+              }
+            };
+          }
+        }
         >
         </Table>
         <Modal title="开通城市" visible={this.state.isShowCIty} onCancel={()=>{this.setState({isShowCIty:false})}} onOk={this.handleSubmit}>

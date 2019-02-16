@@ -21,7 +21,9 @@ import Registers from './pages/form/register'
 import FormLogin from './pages/form/login'
 import BasicTable from './pages/table/basicTable'
 import HighTable from './pages/table/highTable'
-import City from './pages/city/index'
+import City from './pages/city/index';
+import OrderDetail from './pages/order/detail';
+import Common from './common'
 // import Nomatch from './pages/noMatch';
 export default class ERouter extends React.Component {
 
@@ -30,11 +32,15 @@ export default class ERouter extends React.Component {
       <HashRouter>
         <App>
           < Switch >
-             {/* < Route path = "/"
-             component = {
-               Home
-             }
-             />  */}
+            <Route path="/common" render={()=> 
+            < Common>
+              < Route path = "/common/order/detail/:id"
+              component = {
+                OrderDetail
+              } > </Route>
+            </ Common>
+            } > 
+            </Route>
              <Route path = "/admin"
              render = {
                  () =>

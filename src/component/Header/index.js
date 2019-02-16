@@ -46,10 +46,10 @@ class Header extends React.Component {
   }
   getWeatherApidata(){
     axios('https://restapi.amap.com/v3/weather/weatherInfo?city=110101&key=		bffa43c7d8bad97198b27d18cf0dd34a').then((res)=> {
-      console.log(res.data);
-      console.log(res.status);
+      // console.log(res.data);
+      // console.log(res.status);
       let data = res.data.lives[0];
-      console.log(data);
+      // console.log(data);
       this.setState({
         province: data.province,
         city:data.city,
@@ -61,17 +61,40 @@ class Header extends React.Component {
   }
   
   render() {
+    const {
+      menuName,
+      menuType
+    }= this.props;
     return (
     <div className = "header" > 
       <Row >
-        < Col span = {24} className = "header-top" >
+        {
+         menuType ?
+            < Col span = {
+              6
+            }
+            className = "logo" >
+            <img src = "/assets/logo-ant.svg" style={{width:'50px'}} alt = "" / >
+            < span > IMooc 通用管理系统 </span> 
+            </Col>:''
+        }
+        {
+          < Col className = "header-top"
+          span = {
+            menuType ? 18 : 24
+          } >
+            < span > 欢迎， {this.state.userName} </span>
+            < a href = "#" > 退出 </a>
+          </Col>
+
+        }
+        {/* < Col span = {24} className = "header-top" >
           < span > 欢迎， {
             this.state.userName
-            } 
+        } 
           </span>
           <span className="back">退出</span>
-        </Col> 
-       
+        </Col>  */}
       </Row>
       < Row className = "breadcrumb clearfix" >
         <Col  span={4} className = "breadcrumb-title fl" >权限设置
