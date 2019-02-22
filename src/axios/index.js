@@ -1,7 +1,8 @@
 import JsonP from 'jsonp';
 import axios from 'axios';
 import {
-  message
+  message,
+  
 } from "antd";
 export default class Axios{
   static jsonp(options) {
@@ -44,10 +45,9 @@ export default class Axios{
           if (res.code == '0') {
             resolve(res);
           } else {
-            message.info({
-              title: "提示",
-              content: res.msg
-            })
+            message.info(
+              res.msg
+            )
           }
         } else {
           reject(response.data);

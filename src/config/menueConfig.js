@@ -88,7 +88,7 @@ const menuList = [
      ]
    }, {
      title: '员工管理',
-     key: '/user'
+     key: '/admin/user'
    }, {
      title: '车辆地图',
      key: '/bikeMap'

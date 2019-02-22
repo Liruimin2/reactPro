@@ -48,7 +48,8 @@ export default class City extends React.Component {
      this.map = new window.BMap.Map('orderDetailMap');
      this.map.centerAndZoom('北京')
      this.addMaoCortral()
-    this.drawBikeRoute();
+     this.drawBikeRoute();
+     this.drawServiceArea();
    }
   //  添加地图空间
   addMaoCortral = ()=>{
@@ -67,42 +68,59 @@ export default class City extends React.Component {
     let position_list = this.state.position_lists;
     console.log(position_list, 'list');
     
-  //   if (position_list.length > 0) {
-  //     let first = position_list[0];
-  //     let last = position_list[position_list.length - 1 - 1];
-  //     startPoin = new window.BMap.point(first.lon, first.lat);
-  //     endPoint = new window.Bmap.point(last.lon, last.lat);
-  //     let startIcon = new window.BMap.Icon('/public/assets/start_point.png', new window.BMap.Size(36, 42), {
-  //           imageSize: new window.BMap.Size(36, 42)
-  //   }
-  // )
-  //   let startMarker = new window.BMap.Marker(startPoin, {
-  //     icon: startIcon
-  //   });
-  //   // 标注添加到地图
-  //   this.map.addControl(startMarker);
-  //   endPoint = new window.Bmap.point(last.lon, last.lat);
-  //   let endIcon = new window.BMap.Icon('/public/assets/end_point.png', new window.BMap.Size(36, 42), {
-  //     imageSize: new window.BMap.Size(36, 42)
-  //   })
-  //   let endMaker = new window.BMap.Marker(endPoint, {
-  //     icon: endIcon
-  //   })
-  //   this.map.addControl(endMaker);
-  //   // 链接地图路线
-  //   let trackPoint = [];
-  //  position_list.map((item,index)=>{
-  //    let point = item;
-  //    trackPoint.push(new window.BMap.Point(point.lon, point.lat))
-  //  })
-  //  let polyline = new window.BMap.Polyline(trackPoint, {
-  //    strokeColor: '#1869AD',
-  //    strokeWeight: 3,
-  //    strokeOpacity: 1
-  //  })
-  //  this.map.addOverlay(polyline);
-  //  this.map.centerAndZoom(endPoint, 11);
-  // }
+    if (position_list.length > 0) {
+      let first = position_list[0];
+      let last = position_list[position_list.length - 1 - 1];
+      startPoin = new window.BMap.Point(first.lon, first.lat);
+      let startIcon = new window.BMap.Icon('/assets/start_point.png', new window.BMap.Size(36, 42), {
+            imageSize: new window.BMap.Size(36, 42)
+    }
+  )
+    let startMarker = new window.BMap.Marker(startPoin, {
+      icon: startIcon
+    });
+    // 标注添加到地图
+    this.map.addControl(startMarker);
+    endPoint = new window.BMap.Point(last.lon, last.lat);
+    let endIcon = new window.BMap.Icon('/assets/end_point.png', new window.BMap.Size(36, 42), {
+      imageSize: new window.BMap.Size(36, 42)
+    })
+    let endMaker = new window.BMap.Marker(endPoint, {
+      icon: endIcon
+    })
+    this.map.addControl(endMaker);
+    // 链接地图路线
+    let trackPoint = [];
+   position_list.map((item,index)=>{
+     let point = item;
+     trackPoint.push(new window.BMap.Point(point.lon, point.lat))
+   })
+   let polyline = new window.BMap.Polyline(trackPoint, {
+     strokeColor: '#1869AD',
+     strokeWeight: 3,
+     strokeOpacity: 1
+   })
+   this.map.addOverlay(polyline);
+   this.map.centerAndZoom(endPoint, 11);
+  }
+}
+drawServiceArea(){
+  // let pointList = new window.BMap.Point(this.state.position_lists);
+  let pointList=[];
+ 
+  this.state.position_lists.map((item,index)=>{
+    pointList.push(new window.BMap.Point(item.lon, item.lat));
+  })
+  console.log(pointList, "drawServiceArea");
+  
+  let Polygon = new window.BMap.Polygon(pointList, {
+    strokeColor: "#CE0000",
+    strokeWeight: 3,
+    strokeOpacity: 1,
+    fillColor: "green",
+    fillOpacity: 0.4
+  });
+  this.map.addOverlay(Polygon)
 }
   render(){
     const info = this.state.orderInfo;

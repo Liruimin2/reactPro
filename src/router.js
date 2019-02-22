@@ -23,6 +23,7 @@ import BasicTable from './pages/table/basicTable'
 import HighTable from './pages/table/highTable'
 import City from './pages/city/index';
 import OrderDetail from './pages/order/detail';
+import User from './pages/user/index';
 import Common from './common'
 // import Nomatch from './pages/noMatch';
 export default class ERouter extends React.Component {
@@ -108,6 +109,7 @@ export default class ERouter extends React.Component {
                    } 
                 >
                 </Route>
+                <Route path="/admin/user" component={User}></Route>
                  <Route component = {
                    Home
                  } >
