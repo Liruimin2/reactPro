@@ -91,7 +91,7 @@ const menuList = [
      key: '/admin/user'
    }, {
      title: '车辆地图',
-     key: '/bikeMap'
+     key: '/admin/bikeMap'
    }, {
      title: '图标',
      key: '/charts',

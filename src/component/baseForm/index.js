@@ -35,6 +35,7 @@ class FillForm extends React.Component{
         let placeholder = item.placeholder;
         let width = item.width;
         if (item.type == '时间查询'){
+         
           const begin_time = < FormItem label = "订单时间"
           key = {
             filed
@@ -54,15 +55,16 @@ class FillForm extends React.Component{
           key = {
               filed
             } > {
-              getFieldDecorator('end_time')( <
-                DatePicker showTime = {
+              getFieldDecorator('end_time')(
+                 <DatePicker 
+                 showTime = {
                   true
                 }
                 placeholder = {
                   placeholder
                 }
-                format = "YYYY-MM-DD HH:mm:ss" >
-                </DatePicker>
+                format = "YYYY-MM-DD HH:mm:ss" />
+                
               )
             } </FormItem>
           formItemList.push(end_time)
@@ -112,10 +114,7 @@ class FillForm extends React.Component{
     }
     return formItemList;
   }
-  handleClick(){
-
-
-  }
+ 
   render(){
     return (
       <Form layout="inline">
