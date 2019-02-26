@@ -25,6 +25,9 @@ import City from './pages/city/index';
 import OrderDetail from './pages/order/detail';
 import User from './pages/user/index';
 import Map from './pages/map/bikeMap'
+import Bar from './pages/echarts/bar/index'
+import Line from './pages/echarts/line/index'
+import Pie from './pages/echarts/pie/index'
 import Common from './common'
 // import Nomatch from './pages/noMatch';
 export default class ERouter extends React.Component {
@@ -115,6 +118,15 @@ export default class ERouter extends React.Component {
                 component = {
                   Map
                 } > </Route>
+                < Route path = "/admin/charts/bar"
+                component = {
+                  Bar
+                } > </Route>
+                < Route path = "/admin/charts/line"
+                component = {
+                  Pie
+                } > </Route>
+                < Route path = "/admin/charts/pie" component={Line} > </Route>
                  <Route component = {
                    Home
                  } >

@@ -97,15 +97,15 @@ const menuList = [
      key: '/charts',
      children: [{
          title: '柱形图',
-         key: '/charts/bar'
+         key: '/admin/charts/bar'
        },
        {
          title: '饼图',
-         key: '/charts/pie'
+         key: '/admin/charts/pie'
        },
        {
          title: '折线图',
-         key: '/charts/line'
+         key: '/admin/charts/line'
        },
      ]
    }, {
