@@ -28,6 +28,7 @@ import Map from './pages/map/bikeMap'
 import Bar from './pages/echarts/bar/index'
 import Line from './pages/echarts/line/index'
 import Pie from './pages/echarts/pie/index'
+import Edit from './pages/edit/index'
 import Common from './common'
 // import Nomatch from './pages/noMatch';
 export default class ERouter extends React.Component {
@@ -126,6 +127,7 @@ export default class ERouter extends React.Component {
                 component = {
                   Pie
                 } > </Route>
+                <Route path="/admin/rich" component={Edit}></Route>
                 < Route path = "/admin/charts/pie" component={Line} > </Route>
                  <Route component = {
                    Home
