@@ -1,10 +1,15 @@
 import React from 'react';
 import {Menu} from 'antd';
 import {NavLink} from 'react-router-dom';
+import {connect} from 'react-redux'
+import {
+    switchMenu,
+    saveBtnList
+} from './../redux/action'
 import './index.less';
 import MenueConfig from '../../config/menueConfig';
 const SubMenu = Menu.SubMenu;
-export default class NavLeft extends React.Component {
+ class NavLeft extends React.Component {
     state = {
         currentKey: '',
         key:''
@@ -38,16 +43,27 @@ export default class NavLeft extends React.Component {
             
             return false
         }
+        // console.log(item.key,'itemmm');
+        // 事件派发，自动调用reducer，通过reducer保存到store对象中
+        const {dispatch} = this.props;
+        dispatch(switchMenu(item.props.title))
         this.setState({currentKey:key})
     }
-     homeHandleClick = ({
-             index,
-             key
-         }) => {
-        // console.log(key, 'key');
-        // console.log(index);
-        // console.log(this.state.currentKey, 'currentkey');
-     }
+    homeHandleClick=()=>{
+        const {dispatch}= this.props;
+        dispatch(switchMenu('首页'));
+        this.setState({
+            currentKey:''
+        })
+    }
+    //  homeHandleClick = ({
+    //          index,
+    //          key
+    //      }) => {
+    //     // console.log(key, 'key');
+    //     // console.log(index);
+    //     // console.log(this.state.currentKey, 'currentkey');
+    //  }
     render() {
         return ( 
         <div className = "nav-left" >
@@ -64,3 +80,4 @@ export default class NavLeft extends React.Component {
         )
     }
 }
+export default connect()(NavLeft)

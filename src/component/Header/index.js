@@ -7,6 +7,9 @@ import './index.less';
 import '../../style/common.less'
 import Util from '../../util/util';
 import axios from 'axios';
+import {
+  connect
+} from 'react-redux'
 // import axios from '../../axios'
 class Header extends React.Component {
   state = {
@@ -97,7 +100,7 @@ class Header extends React.Component {
         </Col>  */}
       </Row>
       < Row className = "breadcrumb clearfix" >
-        <Col  span={4} className = "breadcrumb-title fl" >权限设置
+        <Col  span={4} className = "breadcrumb-title fl" >{menuName || '首页'}
           <div className="titleShape"></div></Col>
         <Col span={20} className = "weather fr" >
           <span className = "date" > {this.state.syaTime}</span> 
@@ -126,4 +129,9 @@ class Header extends React.Component {
     
   }
 }
-export default Header
+  const mapStateToProps = state => {
+    return {
+      menuName: state.menuName
+    }
+  };
+export default connect(mapStateToProps)(Header)
